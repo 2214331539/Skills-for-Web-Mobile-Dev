@@ -1,6 +1,10 @@
+
+<p align="center">
+  English | <a href="./README-CN.md">中文</a>
+</p>
+
 # Skills for Web & Mobile AI Development
 
-------
 
 ## Overview
 
@@ -10,7 +14,6 @@ Instead of repeatedly rebuilding the same infrastructure, developers and coding 
 
 This repository focuses on turning real-world engineering workflows into reusable AI-agent capabilities.
 
-------
 
 ## Purpose
 
@@ -42,7 +45,6 @@ These skills are designed for coding agents such as:
 - Gemini CLI
 - Other agentic coding environments
 
-------
 
 ## Repository Structure
 
@@ -61,7 +63,6 @@ skills/
 
 Each folder under `skills/` is an independent reusable skill.
 
-------
 
 ## Install a Skill
 
@@ -79,7 +80,6 @@ Global install:
 npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module --global
 ```
 
-------
 
 ## How Skills Work
 
@@ -103,7 +103,6 @@ When invoked, the coding agent will:
 5. Generate or modify code
 6. Validate outputs against the skill workflow
 
-------
 
 ## Design Philosophy
 
@@ -118,7 +117,6 @@ All skills in this repository follow several principles:
 - Stack-adaptive
 - Production-oriented
 
-------
 
 ## Contributing
 
@@ -135,7 +133,6 @@ your-skill/
 └── examples/
 ```
 
-------
 
 ## License
 

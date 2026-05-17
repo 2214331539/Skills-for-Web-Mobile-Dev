@@ -1,6 +1,9 @@
+<p align="center">
+  <a href="./README.md">English</a> | 中文
+</p>
 # 面向 Web 与移动端 AI 开发的 Skills
 
-------
+
 
 ## 概述（Overview）
 
@@ -14,7 +17,7 @@
 
 将真实世界的软件工程工作流抽象为可复用的 AI-Agent 能力。
 
-------
+
 
 ## 仓库目标（Purpose）
 
@@ -46,7 +49,7 @@
 - Gemini CLI
 - 以及其他 Agentic Coding 环境
 
-------
+
 
 ## 仓库结构（Repository Structure）
 
@@ -65,7 +68,7 @@ skills/
 
 `skills/` 目录下的每一个文件夹，都是一个独立、可复用的 Skill。
 
-------
+
 
 ## 安装 Skill
 
@@ -83,7 +86,7 @@ npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module
 npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module --global
 ```
 
-------
+
 
 ## Skill 的工作方式（How Skills Work）
 
@@ -107,7 +110,7 @@ Skill 并不仅仅只是一个 Prompt。
 5. 自动生成或修改代码
 6. 根据 Skill 工作流验证最终输出
 
-------
+
 
 ## 设计理念（Design Philosophy）
 
@@ -122,7 +125,7 @@ Skill 并不仅仅只是一个 Prompt。
 - 自适应技术栈（Stack-adaptive）
 - 面向生产环境（Production-oriented）
 
-------
+
 
 ## 贡献指南（Contributing）
 
@@ -139,7 +142,7 @@ your-skill/
 └── examples/
 ```
 
-------
+
 
 ## License
 
