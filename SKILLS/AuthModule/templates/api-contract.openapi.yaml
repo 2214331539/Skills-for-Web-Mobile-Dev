@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  title: Reusable Auth Module API
+  version: 1.0.0
+servers:
+  - url: /api/auth
+paths:
+  /register:
+    post:
+      summary: Register user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '200':
+          description: Register success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /login:
+    post:
+      summary: Password login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /login/code:
+    post:
+      summary: Verification code login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodeLoginRequest'
+      responses:
+        '200':
+          description: Login success
+  /logout:
+    post:
+      summary: Logout current device
+      responses:
+        '200':
+          description: Logout success
+  /logout-all:
+    post:
+      summary: Logout all devices
+      responses:
+        '200':
+          description: Logout all success
+  /me:
+    get:
+      summary: Get current user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Current user
+  /token/refresh:
+    post:
+      summary: Refresh access token
+      responses:
+        '200':
+          description: Token refreshed
+  /email-code/send:
+    post:
+      summary: Send email verification code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailCodeRequest'
+      responses:
+        '200':
+          description: Code sent
+  /sms-code/send:
+    post:
+      summary: Send SMS verification code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsCodeRequest'
+      responses:
+        '200':
+          description: Code sent
+  /password/reset-code:
+    post:
+      summary: Request password reset code
+      responses:
+        '200':
+          description: Code sent
+  /password/reset:
+    post:
+      summary: Reset password
+      responses:
+        '200':
+          description: Password reset success
+  /password/change:
+    post:
+      summary: Change password
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Password changed
+  /sessions:
+    get:
+      summary: Get sessions
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Session list
+  /sessions/{sessionId}:
+    delete:
+      summary: Revoke session
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session revoked
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        data:
+          nullable: true
+
+    RegisterRequest:
+      type: object
+      required:
+        - registerType
+        - password
+        - confirmPassword
+        - agreeTerms
+      properties:
+        registerType:
+          type: string
+          enum: [email, phone, username]
+        username:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+        verificationCode:
+          type: string
+        inviteCode:
+          type: string
+        agreeTerms:
+          type: boolean
+        agreementVersion:
+          type: string
+
+    LoginRequest:
+      type: object
+      required:
+        - account
+        - password
+      properties:
+        account:
+          type: string
+        password:
+          type: string
+        rememberMe:
+          type: boolean
+        captchaKey:
+          type: string
+          nullable: true
+        captchaCode:
+          type: string
+          nullable: true
+        deviceId:
+          type: string
+
+    CodeLoginRequest:
+      type: object
+      required:
+        - targetType
+        - target
+        - code
+      properties:
+        targetType:
+          type: string
+          enum: [email, phone]
+        target:
+          type: string
+        code:
+          type: string
+        deviceId:
+          type: string
+
+    SendEmailCodeRequest:
+      type: object
+      required:
+        - email
+        - scene
+      properties:
+        email:
+          type: string
+        scene:
+          type: string
+        captchaKey:
+          type: string
+        captchaCode:
+          type: string
+
+    SendSmsCodeRequest:
+      type: object
+      required:
+        - phone
+        - scene
+      properties:
+        phone:
+          type: string
+        scene:
+          type: string
+        captchaKey:
+          type: string
+        captchaCode:
+          type: string
+
+    AuthResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'

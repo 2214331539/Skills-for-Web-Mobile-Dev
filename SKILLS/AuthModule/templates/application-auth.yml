@@ -1,0 +1,108 @@
+auth:
+  module-enabled: ${AUTH_MODULE_ENABLED:true}
+  api-prefix: ${AUTH_API_PREFIX:/api/auth}
+
+  frontend:
+    login-path: ${AUTH_FRONTEND_LOGIN_PATH:/login}
+    register-path: ${AUTH_FRONTEND_REGISTER_PATH:/register}
+    after-login-path: ${AUTH_FRONTEND_AFTER_LOGIN_PATH:/}
+    after-logout-path: ${AUTH_FRONTEND_AFTER_LOGOUT_PATH:/login}
+
+  jwt:
+    access-token-secret: ${JWT_ACCESS_TOKEN_SECRET:replace_with_strong_access_secret}
+    refresh-token-secret: ${JWT_REFRESH_TOKEN_SECRET:replace_with_strong_refresh_secret}
+    access-token-expires-in: ${JWT_ACCESS_TOKEN_EXPIRES_IN:2h}
+    refresh-token-expires-in: ${JWT_REFRESH_TOKEN_EXPIRES_IN:30d}
+    issuer: ${JWT_ISSUER:web-app}
+
+  cookie:
+    enabled: ${AUTH_COOKIE_ENABLED:true}
+    name: ${AUTH_COOKIE_NAME:refresh_token}
+    domain: ${AUTH_COOKIE_DOMAIN:}
+    secure: ${AUTH_COOKIE_SECURE:false}
+    http-only: ${AUTH_COOKIE_HTTP_ONLY:true}
+    same-site: ${AUTH_COOKIE_SAME_SITE:lax}
+
+  password:
+    hash-algorithm: ${PASSWORD_HASH_ALGORITHM:bcrypt}
+    bcrypt-rounds: ${PASSWORD_BCRYPT_ROUNDS:12}
+    min-length: ${PASSWORD_MIN_LENGTH:8}
+    require-uppercase: ${PASSWORD_REQUIRE_UPPERCASE:true}
+    require-lowercase: ${PASSWORD_REQUIRE_LOWERCASE:true}
+    require-number: ${PASSWORD_REQUIRE_NUMBER:true}
+    require-special: ${PASSWORD_REQUIRE_SPECIAL:false}
+
+  verification-code:
+    length: ${VERIFICATION_CODE_LENGTH:6}
+    expires-minutes: ${VERIFICATION_CODE_EXPIRES_MINUTES:5}
+    resend-cooldown-seconds: ${VERIFICATION_CODE_RESEND_COOLDOWN_SECONDS:60}
+    max-attempts: ${VERIFICATION_CODE_MAX_ATTEMPTS:5}
+    store-hash: ${VERIFICATION_CODE_STORE_HASH:true}
+
+  email:
+    provider: ${EMAIL_PROVIDER:log}
+    smtp:
+      host: ${SMTP_HOST:}
+      port: ${SMTP_PORT:587}
+      secure: ${SMTP_SECURE:false}
+      user: ${SMTP_USER:}
+      password: ${SMTP_PASSWORD:}
+      from-name: ${SMTP_FROM_NAME:Your App}
+      from-address: ${SMTP_FROM_ADDRESS:no-reply@example.com}
+
+  sms:
+    provider: ${SMS_PROVIDER:disabled}
+    aliyun:
+      access-key-id: ${ALIYUN_ACCESS_KEY_ID:}
+      access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET:}
+      endpoint: ${ALIYUN_SMS_ENDPOINT:dysmsapi.aliyuncs.com}
+      sign-name: ${ALIYUN_SMS_SIGN_NAME:}
+      template-code: ${ALIYUN_SMS_TEMPLATE_CODE:}
+      template-code-key: ${ALIYUN_SMS_TEMPLATE_CODE_KEY:code}
+    tencent:
+      secret-id: ${TENCENT_SECRET_ID:}
+      secret-key: ${TENCENT_SECRET_KEY:}
+      sdk-app-id: ${TENCENT_SMS_SDK_APP_ID:}
+      sign-name: ${TENCENT_SMS_SIGN_NAME:}
+      template-id: ${TENCENT_SMS_TEMPLATE_ID:}
+
+  captcha:
+    provider: ${CAPTCHA_PROVIDER:disabled}
+    expires-minutes: ${CAPTCHA_EXPIRES_MINUTES:5}
+    turnstile:
+      site-key: ${TURNSTILE_SITE_KEY:}
+      secret-key: ${TURNSTILE_SECRET_KEY:}
+    recaptcha:
+      site-key: ${RECAPTCHA_SITE_KEY:}
+      secret-key: ${RECAPTCHA_SECRET_KEY:}
+
+  oauth:
+    enabled: ${OAUTH_ENABLED:false}
+    github:
+      enabled: ${GITHUB_OAUTH_ENABLED:false}
+      client-id: ${GITHUB_CLIENT_ID:}
+      client-secret: ${GITHUB_CLIENT_SECRET:}
+      callback-url: ${GITHUB_CALLBACK_URL:}
+    google:
+      enabled: ${GOOGLE_OAUTH_ENABLED:false}
+      client-id: ${GOOGLE_CLIENT_ID:}
+      client-secret: ${GOOGLE_CLIENT_SECRET:}
+      callback-url: ${GOOGLE_CALLBACK_URL:}
+    wechat:
+      enabled: ${WECHAT_OAUTH_ENABLED:false}
+      app-id: ${WECHAT_APP_ID:}
+      app-secret: ${WECHAT_APP_SECRET:}
+      callback-url: ${WECHAT_CALLBACK_URL:}
+
+  rate-limit:
+    enabled: ${AUTH_RATE_LIMIT_ENABLED:true}
+    login-max-attempts-per-account: ${AUTH_LOGIN_MAX_ATTEMPTS_PER_ACCOUNT:5}
+    login-lock-minutes: ${AUTH_LOGIN_LOCK_MINUTES:15}
+    login-max-attempts-per-ip: ${AUTH_LOGIN_MAX_ATTEMPTS_PER_IP:20}
+    code-send-max-per-target-per-day: ${AUTH_CODE_SEND_MAX_PER_TARGET_PER_DAY:10}
+    code-send-max-per-ip-per-hour: ${AUTH_CODE_SEND_MAX_PER_IP_PER_HOUR:30}
+
+  logs:
+    security-log-enabled: ${AUTH_SECURITY_LOG_ENABLED:true}
+    login-log-enabled: ${AUTH_LOGIN_LOG_ENABLED:true}
+    mask-account-in-log: ${AUTH_MASK_ACCOUNT_IN_LOG:true}
