@@ -1,17 +1,20 @@
+# Skills for Web & Mobile AI Development
 
-# Modular Development Skills
+------
 
-A collection of reusable coding-agent skills for modern Web / App / Mini Program development.
+## Overview
 
 The goal of this repository is to abstract common and repetitive engineering modules from traditional software development into reusable skills that coding agents can directly use.
 
 Instead of repeatedly rebuilding the same infrastructure, developers and coding agents can install a skill and quickly generate stable, configurable, and production-oriented modules.
 
----
+This repository focuses on turning real-world engineering workflows into reusable AI-agent capabilities.
 
-# Purpose
+------
 
-This repository focuses on abstracting fixed development workflows and infrastructure modules such as:
+## Purpose
+
+This repository focuses on abstracting reusable engineering workflows and infrastructure modules such as:
 
 - Authentication systems
 - Admin dashboards
@@ -22,6 +25,9 @@ This repository focuses on abstracting fixed development workflows and infrastru
 - CRUD scaffolding
 - Deployment workflows
 - AI infrastructure modules
+- Database initialization
+- API integration workflows
+- Frontend architecture patterns
 - And other reusable engineering components
 
 These skills are designed for coding agents such as:
@@ -33,11 +39,12 @@ These skills are designed for coding agents such as:
 - Continue
 - Cline
 - OpenHands
+- Gemini CLI
 - Other agentic coding environments
 
----
+------
 
-# Repository Structure
+## Repository Structure
 
 ```text
 skills/
@@ -50,86 +57,70 @@ skills/
 │
 ├── another-skill/
 │   └── ...
-````
+```
 
 Each folder under `skills/` is an independent reusable skill.
 
----
+------
 
-# Install a Skill
+## Install a Skill
 
 You can install a skill directly from GitHub using the `skills` CLI.
 
 Example:
 
 ```bash
-npx skills add https://github.com/YOUR_NAME/YOUR_REPO --skill reusable-auth-module
-```
-
-or:
-
-```bash
 npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module
 ```
 
----
-
-# Install to Specific Agents
-
-## Codex
-
-```bash
-npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module --agent codex
-```
-
-## Claude Code
-
-```bash
-npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module --agent claude-code
-```
-
-## Global Install
+Global install:
 
 ```bash
 npx skills add YOUR_NAME/YOUR_REPO --skill reusable-auth-module --global
 ```
 
----
+------
 
-# How to Use a Skill
+## How Skills Work
 
-After installation, simply reference the skill in your prompt.
+A skill is not just a prompt.
 
-Example:
+Each skill is a reusable capability package that may include:
 
-```text
-Use the reusable-auth-module skill to implement a reusable login/register module for this project.
-```
+- Instructions (`SKILL.md`)
+- Templates
+- References
+- Scripts
+- Examples
+- Validation logic
 
-The coding agent will:
+When invoked, the coding agent will:
 
-1. Read the skill instructions
+1. Load the skill instructions
 2. Inspect the current project stack
-3. Use the provided templates and references
-4. Generate or modify code accordingly
+3. Read templates and references
+4. Execute scripts if needed
+5. Generate or modify code
+6. Validate outputs against the skill workflow
 
----
+------
 
-# Design Philosophy
+## Design Philosophy
 
 All skills in this repository follow several principles:
 
-* Reusable by default
-* Decoupled from business logic
-* Config-driven
-* Local-development friendly
-* Security-aware
-* Agent-oriented
-* Stack-adaptive
+- Reusable by default
+- Decoupled from business logic
+- Config-driven
+- Local-development friendly
+- Security-aware
+- Agent-oriented
+- Stack-adaptive
+- Production-oriented
 
----
+------
 
-# Contributing
+## Contributing
 
 New reusable development modules are welcome.
 
@@ -144,9 +135,8 @@ your-skill/
 └── examples/
 ```
 
----
+------
 
-# License
+## License
 
 MIT
-
